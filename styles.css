@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Barrio&display=swap");
+
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #ffd93d;
+  --background-start: #ff9a8b;
+  --background-end: #ff6a88;
+  --container-bg: rgba(255, 255, 255, 0.9);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barrio", system-ui;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--background-start),
+    var(--background-end)
+  );
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--container-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+}
+
+.pizza-creator {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.pizza-preview {
+  position: relative;
+  aspect-ratio: 1;
+  background: #f8f8f8;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.pizza-base {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background: #f4d03f;
+  border-radius: 50%;
+  border: 8px solid #e67e22;
+}
+
+.toppings-selection {
+  padding: 1rem;
+}
+
+.toppings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.topping {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.topping:hover {
+  transform: translateY(-3px);
+  background: var(--secondary-color);
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.topping.added {
+  animation: bounce 0.5s ease;
+}
+
+.topping-element {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  animation: bounce 0.5s ease;
+}
+
+.topping-element.pepperoni {
+  background: #c0392b;
+}
+.topping-element.mushrooms {
+  background: #95a5a6;
+}
+.topping-element.peppers {
+  background: #27ae60;
+}
+.topping-element.onions {
+  background: #f1c40f;
+}
+.topping-element.olives {
+  background: #2c3e50;
+}
+.topping-element.pineapple {
+  background: #f39c12;
+}
+
+.download-btn {
+  display: block;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.download-btn:hover {
+  transform: translateY(-3px);
+  background: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .pizza-creator {
+    grid-template-columns: 1fr;
+  }
+
+  .toppings-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .pizza-preview {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
