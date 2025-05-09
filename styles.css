@@ -3,9 +3,10 @@
 :root {
   --primary-color: #ff6b6b;
   --secondary-color: #ffd93d;
-  --background-start: #ff9a8b;
-  --background-end: #ff6a88;
-  --container-bg: rgba(255, 255, 255, 0.9);
+  --background-start: #ff4757;
+  --background-middle: #ff6b81;
+  --background-end: #ff9f43;
+  --container-bg: rgba(255, 255, 255, 0.85);
 }
 
 * {
@@ -18,11 +19,26 @@
 body {
   min-height: 100vh;
   background: linear-gradient(
-    135deg,
+    45deg,
     var(--background-start),
+    var(--background-middle),
     var(--background-end)
   );
+  background-size: 200% 200%;
+  animation: gradientBG 8s ease infinite;
   padding: 20px;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .container {
@@ -32,6 +48,8 @@ body {
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 h1 {
@@ -44,6 +62,10 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .pizza-preview {
@@ -56,6 +78,7 @@ h1 {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  border: 3px solid rgba(255, 255, 255, 0.5);
 }
 
 .pizza-base {
@@ -72,6 +95,9 @@ h1 {
 
 .toppings-selection {
   padding: 1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .toppings-grid {
@@ -89,6 +115,7 @@ h1 {
   color: white;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .topping:hover {
@@ -148,6 +175,7 @@ h1 {
   font-size: 1.2rem;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .download-btn:hover {
