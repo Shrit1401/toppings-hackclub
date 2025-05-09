@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const pizzaPreview = document.querySelector(".pizza-preview");
   const toppingButtons = document.querySelectorAll(".topping");
   const downloadBtn = document.querySelector(".download-btn");
-  let toppingCount = 0;
+  const toppingCount = document.getElementById("topping-count");
+  const pizzaPrice = document.getElementById("pizza-price");
+
+  let toppings = 0;
+  const BASE_PRICE = 10;
+  const TOPPING_PRICE = 2;
 
   function getRandomPosition() {
     const pizzaBase = document.querySelector(".pizza-base");
@@ -21,11 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
     topping.className = `topping-element ${type}`;
     topping.style.left = `calc(50% + ${position.x}px)`;
     topping.style.top = `calc(50% + ${position.y}px)`;
+
     pizzaPreview.appendChild(topping);
     topping.style.animation = "bounce 0.5s ease";
+
     topping.addEventListener("animationend", () => {
       topping.style.animation = "";
     });
+
+    toppings++;
+    toppingCount.textContent = toppings;
+    pizzaPrice.textContent = `$${BASE_PRICE + toppings * TOPPING_PRICE}`;
   }
 
   async function downloadPizza() {
